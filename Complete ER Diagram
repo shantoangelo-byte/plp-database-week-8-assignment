@@ -1,0 +1,102 @@
+
+Table guests {
+  guest_id integer [primary key, increment]
+  first_name varchar(100) [not null]
+  last_name varchar(100) [not null]
+  email varchar(150) [unique]
+  phone varchar(30)
+  address text
+  created_at timestamp
+}
+
+Table room_types {
+  room_type_id integer [primary key, increment]
+  type_name varchar(100) [not null]
+  description text
+  price_per_night decimal(10,2) [not null]
+  capacity integer [not null]
+}
+
+Table rooms {
+  room_id integer [primary key, increment]
+  room_number varchar(20) [unique, not null]
+  room_type_id integer [not null]
+  room_status varchar(30) [not null]
+  floor_number integer
+}
+
+Table reservations {
+  reservation_id integer [primary key, increment]
+  guest_id integer [not null]
+  booking_reference varchar(50) [unique, not null]
+  check_in date [not null]
+  check_out date [not null]
+  reservation_status varchar(30) [not null]
+  created_at timestamp
+}
+
+Table reservation_rooms {
+  reservation_id integer [not null]
+  room_id integer [not null]
+  nightly_rate decimal(10,2) [not null]
+
+  indexes {
+    (reservation_id, room_id) [pk]
+  }
+}
+
+Table payments {
+  payment_id integer [primary key, increment]
+  reservation_id integer [not null]
+  amount decimal(10,2) [not null]
+  payment_method varchar(50)
+  payment_status varchar(30)
+  transaction_reference varchar(100)
+  payment_date timestamp
+}
+
+Table staff {
+  staff_id integer [primary key, increment]
+  first_name varchar(100) [not null]
+  last_name varchar(100) [not null]
+  email varchar(150) [unique]
+  job_title varchar(100)
+  employment_status varchar(30)
+}
+
+Table services {
+  service_id integer [primary key, increment]
+  service_name varchar(100) [not null]
+  description text
+  service_price decimal(10,2)
+}
+
+Table service_requests {
+  request_id integer [primary key, increment]
+  guest_id integer [not null]
+  service_id integer [not null]
+  staff_id integer
+  reservation_id integer
+  request_status varchar(30)
+  request_date timestamp
+}
+
+// Relationships
+
+Ref: room_types.room_type_id < rooms.room_type_id
+
+Ref: guests.guest_id < reservations.guest_id
+
+Ref: reservations.reservation_id < reservation_rooms.reservation_id
+
+Ref: rooms.room_id < reservation_rooms.room_id
+
+Ref: reservations.reservation_id < payments.reservation_id
+
+Ref: guests.guest_id < service_requests.guest_id
+
+Ref: services.service_id < service_requests.service_id
+
+Ref: staff.staff_id < service_requests.staff_id
+
+Ref: reservations.reservation_id < service_requests.reservation_id
