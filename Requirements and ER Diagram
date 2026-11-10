@@ -1,0 +1,66 @@
+# CHANGJWOKHABII HOTEL MANAGEMENT SYSTEM
+## Database Project – Requirements Summary
+
+### 1. Project Overview
+CHANGJWOKHABII Hotel Management System is a proposed database application for managing a 40-room midscale hotel in Kenya. The system will organize hotel operations, customer information, room reservations, payments, staff activities, and guest service requests.
+
+### 2. Problem Statement
+Managing hotel operations using manual records or disconnected systems can result in double bookings, inaccurate customer records, payment tracking difficulties, and delays in providing services.
+
+The proposed system will centralize hotel information in a relational database and improve the accuracy, security, and efficiency of hotel operations.
+
+### 3. Project Objectives
+- Store and manage guest information.
+- Manage rooms, room types, and room availability.
+- Record and track reservations.
+- Record guest payments and payment status.
+- Manage hotel staff and service requests.
+- Maintain an audit trail of important database changes.
+- Protect sensitive customer information.
+- Improve database query performance.
+
+### 4. Main System Requirements
+
+**Functional requirements**
+1. Register and update guest information.
+2. Add, update, and manage hotel rooms.
+3. Create, modify, and cancel reservations.
+4. Assign one or more rooms to a reservation.
+5. Record payments against reservations.
+6. Record and manage guest service requests.
+7. Allow authorized staff to access relevant hotel records.
+8. Track important changes through audit logging.
+
+**Non-functional requirements**
+- Database security through role-based permissions.
+- Reliable backups and tested recovery.
+- Efficient queries and appropriate indexing.
+- Data integrity through primary and foreign keys.
+- Secure handling of guest information.
+- Reliable operation during normal hotel business activities.
+
+### 5. Database Entities
+The proposed database will contain:
+- Guests
+- Room Types
+- Rooms
+- Reservations
+- Reservation Rooms
+- Payments
+- Staff
+- Services
+- Service Requests
+
+### 6. Technology Stack
+- PostgreSQL: Main relational database.
+- Redis: Temporary reservation-related caching and frequently accessed data.
+- Flyway: Version-controlled database migrations.
+- SQL: Database queries, triggers, and security policies.
+- Visual Studio Code: Development environment.
+- dbdiagram.io: Entity Relationship Diagram.
+
+### 7. Expected Outcomes
+The completed system will provide a centralized hotel database that supports reservations, room management, guest information, payments, and hotel services. It will also demonstrate database auditing, performance optimization, security controls, backup and recovery, and the integration of a NoSQL technology.
+
+### 8. Project Scope
+This project focuses on the database architecture and core data management functions. It does not initially include a complete customer-facing website or mobile application.
